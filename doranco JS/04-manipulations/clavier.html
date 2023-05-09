@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deplacement au clavier</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #move{
+            height: 200px;
+            width: 200px;
+            background-color: orange;
+            /* par defaut la position d'un bloc est static */
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="move"></div>
+
+    <script>
+
+        // j'affiche dans la console les propriétés de l'id move
+        console.log(move);
+        // espacement en pixel entre ma selection est le haut de ma page
+        console.log(move.offsetTop);
+        // espacement en pixel entre ma selection est la gauche de ma page
+        console.log(move.offsetLeft);
+
+
+        // exemple de site decrivant le mappage du clavier keycode
+        // https://keycode.info/
+
+
+        // je vise le document pour detecter une frappe
+        document.onkeydown = function(){
+            console.log('frappe');
+
+            if(event.keyCode == 38){
+                console.log('haut');
+                move.style.top = move.offsetTop - 10 + 'px';
+                console.log(move.offsetTop);
+            }
+            else if(event.keyCode == 40){
+                console.log('bas');
+                move.style.top = move.offsetTop + 10 + 'px';
+            }
+            else if(event.keyCode == 37){
+                console.log('gauche');
+                move.style.left = move.offsetLeft - 10 + 'px';
+            }
+            else if(event.keyCode == 39){
+                console.log('droite');
+                if(move.offsetLeft < 800){
+                move.style.left = move.offsetLeft + 10 + 'px';
+                }
+            }
+
+
+
+        };
+
+
+    </script>
+</body>
+</html>

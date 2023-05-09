@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        header{
+            background: #000;
+            text-align: right;
+            padding: 15px;
+        }
+        aside{
+            background-color: tomato;
+            width: 250px;
+            height: 100vh;
+            position : absolute;
+            top: 0;
+            left: -250px;
+            transition: 0.6s;
+        }
+        .asideOn{
+            left: 0;
+        }
+        #maDiv{
+            background: lightpink;
+            height: 0px;
+            overflow: hidden;
+            text-align: center;
+        }
+        #maDiv img{
+            width: 400px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <button id="on-off">MENU</button>
+        <button id="bloc">Bloc rose</button>
+    </header>
+    <aside id="menu"></aside>
+
+    <!-- Ma div animée par setInterval() -->
+    <div id="maDiv">
+        <img src="../00-ressources/imgs/1.jpg" alt="piscine">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita praesentium voluptas dolorem consectetur eos sunt neque aperiam esse. Unde minima provident sequi dolorum ex cum maxime minus ullam nesciunt repellat!</p>
+    </div>
+
+    <script>
+
+        // apparition du menu lateral en jouant sur les coordonnées de l'element absolute
+        document.querySelector('#on-off').addEventListener('click', function(){
+
+          /*   if(menu.style.left == '0px'){
+                menu.style.left = "";
+            }
+            else{
+                menu.style.left = "0px";
+            } */
+            
+            menu.classList.toggle('asideOn');
+
+        });
+
+
+        // la fonction setInterval() s'applique à l'objet window
+        // elle permet de repeter tous les X milliemes de seconde une fonction
+        // arg 1 : la fonction à repeter
+        // arg 2 : L'interval de repetition
+
+        var hauteur = 0;
+        // fonction a repeter
+        function f(){
+            hauteur += 10;
+            maDiv.style.height = hauteur + 'px';
+
+            // clearInterval permet de stopper la repetition d'un setInterval()
+            if(hauteur >= 600){
+                clearInterval(timer);
+            }
+
+        }
+        // mise en place de setInterval pour repeter la fonction f()
+
+        var timer;
+        bloc.onclick = function(){
+            timer = window.setInterval("f()", 2);
+        };
+
+        // fonction caroussel
+
+        //var monImage =maDiv.children[0];
+        var monImage = maDiv.firstElementChild ;
+            console.dir(`${monImage}`) ;
+        function caroussel(){
+            // je recupere le src de l'image affichée
+
+            var source = monImage.getAttribute('src');
+            console.log(source);
+
+            switch(source){
+                case '../00-ressources/imgs/1.jpg' :
+                    monImage.setAttribute('src', '../00-ressources/imgs/2.jpg');
+                    monImage.setAttribute('alt', 'Pelouse');
+                    break;
+                case '../00-ressources/imgs/2.jpg' :
+                    monImage.setAttribute('src', '../00-ressources/imgs/3.jpg');
+                    monImage.setAttribute('alt', 'Pelouse');
+                    break;
+                case '../00-ressources/imgs/3.jpg' :
+                    monImage.setAttribute('src', '../00-ressources/imgs/1.jpg');
+                    monImage.setAttribute('alt', 'Pelouse');
+                    break;
+            }
+
+
+        }
+
+        // initialisation du setInterval pour la fonction caroussel
+        var stop = window.setInterval('caroussel()', 2000);
+
+        // si je survole l'image, je stoppe le setInterval
+        monImage.onmouseover = function(){
+                clearInterval(stop);
+        };
+        // je cesse de survoler, le setInterval reprend
+        monImage.onmouseout = function(){
+            stop = window.setInterval('caroussel()', 2000);
+        };
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>TP Calculatrice</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        #container{
+            width: 80%;
+            margin: 0 auto;
+            background-color: dodgerblue;
+            color: white;
+            padding: 50px;
+            margin-top: 20px;
+        }
+        .cacher{
+            display: none;
+        }
+        .montrer{
+            display: block;
+        }
+        #info{
+            background: gold;
+            color: dodgerblue;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#" id="montre">Faire apparaitre</a>
+    /
+    <a href="#" id="cache">Faire disparaitre</a>
+    <br>
+    <a href="#" id="toggle">Toggle</a>
+    <div id="container" class="test">
+        <form name="formulaire" id="formulaire">
+            <label for="saisie1">Saisie 1</label>
+            <input type="text" name="saisie1" id="saisie1">
+            <select name="operateur">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+            <label for="saisie2">Saisie 2</label>
+            <input type="text" name="saisie2" id="saisie2">
+            <input type="submit" name="bouton" value="OK">
+        </form>
+        <p id="info"></p>
+    </div>
+    
+
+    <script>
+        
+        "use strict" ;
+        /* mes consoles pour voir ce que je récupere */
+        console.log(document.getElementById('info')) ;
+        
+        var monP = document.getElementById('info') ;
+
+        console.dir(document.querySelector('form input[type=submit]')) ;
+
+        var monBouton = document.querySelector('form input[type=submit]') ;
+
+        /* faire apparaitre la calculatrice */
+        document.getElementById('montre').onclick = () => { 
+            console.log('click montre') ;
+            document.getElementById('container').classList.add('montrer') ;
+            document.getElementById('container').classList.remove('cacher') ;
+
+            
+        } ;
+
+        /* faire disparaitre la calculatrie */
+        document.getElementById('cache').onclick = () => { 
+            console.log('click cache') ;
+            document.getElementById('container').classList.add('cacher') ;
+            document.getElementById('container').classList.remove('montrer') ;
+            
+        } ;
+
+        /* le mouse over du champ saisie 1 */
+        document.getElementById('saisie1').onmouseover = () => { 
+            console.log('test over') ;
+            monP.innerText = 'saisir un chiffre' ;
+            monP.style.color = 'black' ;
+        } ;
+
+        /* le mouse out du champ saisie 1 */
+        document.getElementById('saisie1').onmouseout = () => { 
+            console.log('test over') ;
+            monP.innerText = '' ;
+            monP.style.color = '' ;
+        } ;
+
+        /* le mouse over du champ saisie 2 */
+        document.getElementById('saisie2').onmouseover = () => { 
+            console.log('test over') ;
+            monP.innerText = 'saisir un chiffre' ;
+            monP.style.color = 'black' ;
+        } ;
+
+        /* le mouse out du champ saisie 2 */
+        document.getElementById('saisie2').onmouseout = () => { 
+            console.log('test over') ;
+            monP.innerText = '' ;
+            monP.style.color = '' ;
+        } ;
+
+        
+        console.dir(document.getElementsByName('operateur')) ;
+
+        /* le mouse over du selecteur operateur */
+        document.getElementsByName('operateur')[0].onmouseover = () => { 
+            console.log('test over') ;
+            monP.innerText = 'selectionner un opérateur : + - * /' ;
+            monP.style.color = 'black' ;
+        } ;
+
+        /* le mouse out du selecteur operateur */
+        document.getElementsByName('operateur')[0].onmouseout = () => { 
+            console.log('test over') ;
+            monP.innerText = '' ;
+            monP.style.color = '' ;
+        } ;
+
+
+        monBouton.onclick = function() {
+
+            event.preventDefault() ;
+            console.log('test');
+            console.dir(document.getElementById('formulaire')[1].value) ;
+
+            var terme1 = parseFloat(document.getElementById('saisie1').value) ;
+            console.dir(document.getElementById('saisie1')) ;
+            console.dir(document.getElementsByName('operateur')[0].value) ;
+
+            var operateur = document.getElementsByName('operateur')[0].value ;
+
+            var terme2 = parseFloat(document.getElementById('saisie2').value) ;
+
+
+            console.log('vérfie si terme 1 n\'est pas un nombre : '+ isNaN(terme1)) ;
+
+            console.log(`terme 1 : ${terme1}, terme 2 : ${terme2}`) ;
+
+            
+            if(isNaN(terme1) == true || isNaN(terme2) == true )
+            {
+                console.log('un des deux termes n\'est pas un nombre') ;
+                alert('Attention vous n\'avez pas mis de nombre dans les cases !!')
+            }
+            else
+            {
+                switch (operateur) {
+                    case '+':
+                        alert(`${terme1} ${operateur} ${terme2} = ${terme1+terme2}`)
+                        break;
+                
+                    case '-':
+                        alert(`${terme1} ${operateur} ${terme2} = ${terme1-terme2}`)
+                        break;
+                
+                    case '*':
+                        alert(`${terme1} ${operateur} ${terme2} = ${terme1*terme2}`)
+                        break;
+    
+                    case '/':
+                        alert(`${terme1} ${operateur} ${terme2} = ${terme1/terme2}`)
+                        break;
+    
+                    default:
+                        break;
+                }
+            }
+
+
+        } ;
+
+/*  mes autres tests
+        monBouton.onclick = () => {
+
+            event.preventDefault() ;
+            console.dir(saisie1) ;
+
+            console.log(saisie1.value) ;
+            monP.innerText = saisie1.value +"-"+document.getElementsByName('operateur')[0].value+"-"+saisie2.value ;
+
+
+        } ;
+
+        console.log('operateur : '+ document.getElementsByName('operateur')) ;
+        console.dir(document.getElementsByName('operateur')[0].value) ;
+
+        var monText = document.getElementById('formulaire') ;
+        console.log(monText) ;
+
+        monText.appendChild(document.createElement("p")) ;
+        var monP = document.querySelector("#formulaire > p") ;
+        monP.classList.add('monP') ;
+        console.dir(monP) ;
+
+
+        console.log(saisie1.value) ;
+ */
+    </script>
+</body>
+</html>

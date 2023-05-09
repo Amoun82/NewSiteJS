@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassList</title>
+    <style>
+        .vert{
+            color: green;
+            background-color: lightgrey;
+            font-style: italic;
+            padding: 15px;
+        }
+        .rouge{
+            color: red;
+        }
+        .disparition{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="rouge">Manipulation de classes</h1>
+    <button id="btn1">Vert</button>
+    <button id="btn2">Rouge</button>
+    <button id="btn3">disparition en toggle</button>
+
+    <script>
+        // https://developer.mozilla.org/fr/docs/Web/API/Element/classList
+
+        // classList
+        // interroger sur les classes présente chez un element
+        var monH1 = document.querySelector('h1');
+        console.log(monH1.classList);
+
+        // classList.add() ajouter une classe
+        monH1.classList.add('vert');
+
+        // ici pas de changement de couleur, pour changer il faudrait retirer rouge
+
+        // classList.remove() retirer une classe
+        monH1.classList.remove('rouge');
+
+
+        // je selection mon btn1
+        btn1.onclick = function(){
+            monH1.classList.remove('rouge');
+            monH1.classList.add('vert');
+        };
+        // je selection mon btn2
+        btn2.onclick = function(){
+            monH1.classList.remove('vert');
+            monH1.classList.add('rouge');
+        };
+
+        // contains() permet de tester la presence ou non d'une classe (true ou false)
+        console.log(monH1.classList.contains('rouge')); // --> false, on a retiré la classe rouge
+        
+
+        // apparaitre disparaitre le titre grace a classList.toggle
+        btn3.onclick = function(){
+
+            // reponse true si .dispariont est présente
+            /* if(monH1.classList.contains('disparition')){
+                monH1.classList.remove('disparition');
+            }
+            else{
+                monH1.classList.add('disparition');
+            } */
+
+            
+            monH1.classList.toggle('disparition');
+
+        };
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipilation de dates</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        function horloge(){
+        // creation de la date
+
+        var today = new Date();
+        console.log(today);
+
+        // sur cette variable on extrait les différentes infos
+
+        // recuperation du jour du mois
+        var date = today.getDate();
+        console.log(date);
+
+        // recuperation du jour de la semaine
+        // je créé un tableau ou chaque indice est un jour de la semaine
+        var nomJour = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]; 
+        // je vais chercher le today.getDay(jour de la semaine en number) en parcourant mon tableau
+        var jour = nomJour[today.getDay()];
+
+        // recuperation du mois
+        var nomMois = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"];
+
+        console.log(today.getMonth());
+        var mois = nomMois[today.getMonth()];
+        console.log(mois);
+
+        // recuperation de l'année
+        var annee = today.getFullYear();
+        console.log(annee);
+
+        // recuperation de l'heure
+        var heure = today.getHours();
+        console.log(heure);
+
+        // recuperation des minutes
+        var minutes = today.getMinutes();
+        console.log(minutes);
+
+        // recuperation des secondes
+        var secondes = today.getSeconds();
+        console.log(secondes);
+
+        document.querySelector('body').innerHTML = jour + ' ' + date + ' ' + mois + ' ' + annee + ' - ' + heure + 'H' + minutes + 'm' + secondes; 
+        }
+        
+        window.setInterval('horloge()', 1000);
+        
+
+    </script>
+</body>
+</html>

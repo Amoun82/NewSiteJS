@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evenements JS</title>
+    <style>
+        #div1{
+            background: red; color : white; padding: 50px;
+        }
+        #div2{
+            background: gold; color : white; padding: 50px;
+        }
+        #div3{
+            background: palegreen; color : white; padding: 50px;
+        }
+    </style>
+    
+</head>
+<body>
+    <h2>Click</h2>
+    <button id="btn1">Propriété d'evenement</button>
+    <button id="btn2">Fonction evenement</button>
+    <button id="btn3">Disparition</button>
+    <br>
+    <br>
+    <div id="div1">Div1</div>
+    <h2 id="monH2">DblClick</h2>
+    <div id="div2">Div2</div>
+    <h2>MouseOver & MouseOut</h2>
+    <div id="div3">Div3</div>
+
+    <ol>
+        <li>Element</li>
+        <li>Element</li>
+        <li>Element</li>
+        <li>Element</li>
+        <li>Element</li>
+        <li>Element</li>
+        <li>Element</li>
+        <li>Element</li>
+    </ol>
+
+
+    <h2>Focus / Blur / submit</h2>
+    <form id="monFormulaire">
+        <input type="text" id="monInput" name="monInput">
+        <input type="submit" id="monSubmit" name="monSubmit">
+    </form>
+    <p id="resultat"></p>
+    <form id="monFormulaire2">
+        <label for="saisie">Tapez entre 5 et 10 caractères</label>
+        <input type="text" id="saisie">
+    </form>
+    
+    <script src="evenement.js"></script>
+</body>
+</html>

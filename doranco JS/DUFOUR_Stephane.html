@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>TP Javascript</title>
+		<style>
+		
+		
+
+		/*
+		BODY
+		*/
+
+		/* Définition du body : les propriétés de texte présentes dans body seront valables pour la totalité de la page par defaut */
+		body{
+			background-color: rgb(100,100,100); /* fond gris de la fenêtre */
+			font-family: sans-serif; /* police à bâton par defaut */
+			color: rgb(255,255,255); /* texte blanc par defaut */
+			text-transform: uppercase;  /* texte en majuscule par defaut */
+			text-align: center;  /* texte centré par defaut */
+			margin: 0;  /* annulation des marge de body */
+		}
+
+		/*
+		CONTENEUR
+		*/
+
+		/* Classe du conteneur principal */
+		.conteneur{
+			width: 80%;  /* largeur (fixe) du contenu du site dans la fenêtre */
+			margin: 0 auto;  /* autocentrage du conteneur */
+		}
+
+		/*
+		EN-TETE
+		*/
+
+		/* ID de l'en-tête de page */
+		#header{
+			width: 100%;  /* réaffirmation de la largeur totale de l'en-tête */
+			background-color: #228B22; /* couleur de fond du bloc */
+			font-weight: bold;  /* texte en gras dans le header */
+		}
+		/* classe définissant le bloc logo */
+		.logo{
+			float: left;  /* flux float placant .logo et #menu côte à côte */
+			background-color: #3CB371; /* couleur de fond du bloc */
+			width: 25%; /* largeur du bloc logo */
+			height: 120px; /* hauteur du bloc logo */
+			line-height: 120px; /* hauteur de ligne du texte dans le bloc logo (permet de descendre le texte donc le centrage vertical) */
+		}
+		/* ID de la navigation */
+		#menu{
+			float: left;  /* flux float placant .logo et #menu côte à côte */
+			width: 75%; /* largeur du bloc réassignée à 100% */
+			height: 50px; /* hauteur des blocs */
+			margin-top: 35px;
+		}
+		/* Toutes les div présentes dans #menu (ce sont les éléments de menu) */
+		#menu div{
+			float: left;  /* flux float placant les div éléments de menu côte à côte */
+			width: 25%; /* largeur des blocs */
+			line-height: 50px; /* hauteur de ligne du texte */
+			font-weight: bold; /* texte en gras */
+		}
+		/* Les éléments de menu pairs */
+		#menu div:nth-child(odd){ background-color: #32CD32; } /* fond */
+		/* Les éléments de menu impairs */
+		#menu div:nth-child(even){ background-color: #9ACD32; } /* fond */
+
+		/*
+		CONTENU
+		*/
+
+		/* ID de la div entre HEADER et FOOTER incluant le conteneur */
+		#contenu{
+			width: 100%; /* largeur du bloc réassignée à 100% */
+		}
+		/* classe définissant les blocs A à D */
+		.bloc{
+			float: left;  /* flux float placant les blocs côte à côte */
+			background-color: rgb(200,200,200); /* couleur de fond */
+			margin: 2%; /* marges exterieures */
+			width: 46%; /* largeur */
+			height: 100px; /* hauteur */
+			line-height: 100px; /* hauteur de ligne du texte */
+		}
+		/* ID de MAIN  */
+		#principal{
+			float: left;  /* flux float placant ASIDE et MAIN côte à côte */
+			margin: 0 2%; /* marges exterieures */
+			width: 96%; /* largeur */
+			background-color: rgb(240,240,240); /* fond gris */
+			color: rgb(150,150,150); /* couleur du texte */
+		}
+		/* Règle définissant ARTICLE dans MAIN */
+		#principal article{
+			background-color: rgb(240,240,240); /* couleur de fond */
+		}
+
+		/*
+		PIED DE PAGE
+		*/
+
+		/* ID de FOOTER  */
+		#footer{
+			background-color: #228B22; /* couleur de fond du bloc */
+			width: 100%; /* largeur du bloc réassignée à 100% */
+			font-weight: bold; /* texte en gras */
+		}
+		/* classe définissant les blocs présents dans le pied de page */
+		.block-footer{
+			float: left; /* flux float placant les blocs côte à côte */
+			width: 50%; /* largeur */
+			height: 80px; /* hauteur */
+			line-height: 80px; /* hauteur de ligne du texte */
+		}
+		/* classe définissant les blocs impairs présents dans le pied de page */
+		.block-footer:nth-child(odd){ background-color: #32CD32; }
+		/* classe définissant les blocs pairs présents dans le pied de page */
+		.block-footer:nth-child(even){ background-color: #9ACD32; }
+
+		/*
+		CLEAR
+		*/
+
+		/* Définition de la classe nettoyant les flux float */
+		.clear{
+			clear: both;
+		}
+		
+		
+			.disparition{
+				display: none;
+			}
+		</style>
+	</head> 
+	<body>
+		<!-- En-tête contenant le logo et la bannière (pas de float nécessaire) -->
+		<header id="header">
+			<!-- Conteneur auto centré -->
+			<div class="conteneur">
+				<!-- logo float left -->
+				<div class="logo">
+					<span>logo</span>
+				</div>
+				<!-- navigation float left contenant les éléments de menu -->
+				<nav id="menu">
+					<!-- éléments de menu tous float left -->
+					<div id="menu1">menu 1</div>
+					<div id="menu2">menu 2</div>
+					<div>menu 3</div>
+					<div>menu 4</div>
+					<!-- clear du float des éléments de menu -->
+					<div class="clear"></div>
+				</nav>
+				<!-- clear du float de logo et menu -->
+				<div class="clear"></div>
+			</div>
+		</header>
+		<!-- div contenant la colonne et le contenu principal (pas de float nécessaire) -->
+		<div id="contenu">
+			<!-- Conteneur auto centré -->
+			<div class="conteneur">
+				<!-- bloc 46% de large 2% de marge float left -->
+				<div class="bloc">
+					<span id="blocA">bloc a</span>
+				</div>
+				<!-- bloc 46% de large 2% de marge float left -->
+				<div class="bloc">
+					<span id="blocB">bloc b</span>
+				</div>
+				<!-- contenu principal float left mais pleine largeur (100%) -->
+				<main id="principal">
+					<!-- élément de contenu principal (pas de float nécessaire) -->
+					<article>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.8151973140734!2d2.252311751458729!3d48.842663609665834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67abf4dc94695%3A0x4d41b7cedc34007!2s1+Rue+Claude+Farr%C3%A8re%2C+75016+Paris!5e0!3m2!1sfr!2sfr!4v1540165211604" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+					</article>
+				</main>
+				<!-- bloc 46% de large 2% de marge float left -->
+				<div class="bloc">
+					<span>block c</span>
+				</div>
+				<!-- bloc 46% de large 2% de marge float left -->
+				<div class="bloc">
+					<span>block d</span>
+				</div>
+				<!-- clear du float des blocs de contenu -->
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- pied de page contenant les 4 blocs footer (pas de float nécessaire) -->
+		<footer id="footer">
+			<!-- Conteneur auto centré -->
+			<div class="conteneur">
+				<!-- blocs de pied de page tous float left -->
+				<div class="block-footer">
+					<span>footer 1</span>
+				</div>
+				<div class="block-footer">
+					<span>footer 2</span>
+				</div>
+				<!-- clear du float des blocs de pied de page -->
+				<div class="clear"></div>
+			</div>
+		</footer>
+		<script>
+		window.onload = function(){
+			
+			// renommez votre fichier avec vos noms et prénoms avant de commencer
+			
+			// règle à respecter : on n'ajoute rien au code html ! Bon code !
+			
+			// 1 . je clique sur "menu 1" : le texte suivant apparait dans le "BLOC A" -> "Le bloc A est maintenant rempli !"
+			console.log(menu1) ;
+
+            menu1.onclick = function() {
+                console.log('test question 1') ;
+                blocA.innerText = "Le bloc A est maintenant rempli !" ;
+            }
+			
+			
+			// 2 . je survole "menu 2" : le contenu de "BLOC B" est remplacé par l'image suivante : <img src="https://www.pierre-giraud.com/wp-content/uploads/2019/08/jquery-cours.png" alt="mon image" style="width: 300px; margin-top: 15px;">
+			console.log(menu2) ;
+            menu2.addEventListener("mouseover", () => {
+                console.log('test question 2') ;
+                blocB.innerHTML = '<img src="https://www.pierre-giraud.com/wp-content/uploads/2019/08/jquery-cours.png" alt="mon image" style="width: 300px; margin-top: 15px;">' ;
+            })
+			
+			
+			
+			
+			// 3 . je clique sur "menu 3" je fais apparaitre disparaitre la googlemap grace à classList.toggle (attention "menu3" n'a pas d'ID)  grace a la classe ".disparition" présente dans l'element <style> du <head>
+			
+			console.log(document.querySelectorAll('#menu div')[2]) ;
+			var menu3 = document.querySelectorAll('#menu div')[2] ;
+            menu3.onclick = () => {
+                console.log('test question 3') ;
+                console.log(document.querySelector('#principal article iframe')) ;
+                document.querySelector('#principal article iframe').classList.toggle("disparition") ;
+
+            }
+			
+			
+			// 4 . je double double clique sur "menu 4" : "BLOC C" passe a une largeur de 66% et "BLOC D" a une largeur de 26% (au lieu de 46%/46%) 
+
+            console.log(menu.children[3]) ;
+			var menu4 = menu.children[3] ;
+
+            menu4.addEventListener('dblclick', () => {
+                console.log('test question 4') ;
+                console.log(document.querySelectorAll('.bloc')[2]) ;
+                console.log(document.querySelectorAll('.bloc')[3]) ;
+                document.querySelectorAll('.bloc')[2].style.width = '66%' ;
+                document.querySelectorAll('.bloc')[3].style.width = '26%' ;
+
+            })
+			
+			
+			// 5 . un double click sur "FOOTER 2"fait apparaitre une alert('Bye bye !') puis fait disparaitre le header, le #contenu et le footer.
+			
+			console.log(document.querySelectorAll('.block-footer')[1])
+			var footer2 = document.querySelectorAll('.block-footer')[1] ;
+
+            footer2.ondblclick = () => {
+                console.log('test question 5') ;
+                alert('Bye bye !')
+                document.querySelector('header').classList.toggle("disparition") ;
+                document.querySelector('#contenu').classList.toggle("disparition") ;
+                document.querySelector('footer').classList.toggle("disparition") ;
+
+            };
+			
+			
+			// Envoyez votre réalisation à l'adresse numakrouchi@gmail.com
+			// merci pour tout !
+			
+		};
+		</script>
+
+	</body>
+</html>
